@@ -137,5 +137,6 @@ loadfile = function(...)
 	return beforeloadfile(unpack(input))
 end
 --auto added
-shell.setAlias("list","/root/programs/basics/list")
-shell.setAlias("edit","/root/programs/luaide/luaIDE.lua")
+shell.setAlias("list","/root/programs/basics/list.lua")
+shell.clearAlias("ls")
+shell.setAlias("ls","/root/programs/basics/list.lua")
