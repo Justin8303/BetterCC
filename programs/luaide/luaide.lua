@@ -34,10 +34,14 @@ local curLanguage = {}
 local event_distract = "luaide_distractionEvent"
 
 -- Locations
+local grp = shell.getRunningProgram()
+local a = grp:find("[a-zA-Z_0-9]*%.*[a-zA-Z_0-9]*$")
+local workdir = grp:sub(1,a-1)
+
 local updateURL = "https://raw.github.com/GravityScore/LuaIDE/master/luaide.lua"
 local ideLocation = "/" .. shell.getRunningProgram()
-local themeLocation = "LuaIDE-Theme"
-local tempthemefile = "LuaIDE_temp_theme_file"
+local themeLocation = workdir.."/LuaIDE-Theme"
+local tempthemefile = workdir.."/LuaIDE_temp_theme_file"
 
 local function isAdvanced() return term.isColor and term.isColor() end
 
@@ -2042,8 +2046,6 @@ local function changeTheme()
 		local path = nil
 		for _, v in pairs(availableThemes) do
 			if v[1] == t then
-				local grp = shell.getRunningProgram()
-				local workdir = grp:gmatch(grp:match("[a-zA-Z_0-9]*%.*[a-zA-Z_0-9]*$"),"")
 				path = workdir.."themes/"..v[2]
 			end
 		end
