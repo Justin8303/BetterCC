@@ -12,6 +12,7 @@ local tFiles = {}
 
 local tLuaFiles = {}
 local startup = {}
+local tDirslocked = {}
 
 local tDirs = {}
 
@@ -20,7 +21,11 @@ for n, sItem in pairs( tAll ) do
 	if bShowHidden or string.sub( sItem, 1, 1 ) ~= "." then
 		local sPath = fs.combine( sDir, sItem )
 		if fs.isDir( sPath ) then
-			table.insert( tDirs, sItem )
+			if sItem == "rom" or sItem == "root" then
+				table.insert( tDirslocked, sItem )
+			else
+				table.insert( tDirs, sItem )
+			end
 		else
 			if sItem:match("%.%blua$") then
 				table.insert( tLuaFiles, sItem )
@@ -39,7 +44,22 @@ table.sort( tFiles )
 table.sort( tLuaFiles )
 
 if term.isColour() then
-	textutils.pagedTabulate( colors.blue, tDirs, colors.lightGray, tFiles , colors.green, tLuaFiles , colors.orange, startup)
+	textutils.pagedTabulate(
+		colors.red,
+		tDirslocked,
+
+		colors.blue,
+		tDirs,
+
+		colors.lightGray,
+		tFiles, 
+
+		colors.green,
+		tLuaFiles,
+
+		colors.orange,
+		startup
+	)
 else
-	textutils.pagedTabulate( tDirs, tFiles, tLuaFiles )
+	textutils.pagedTabulate(tDirslocked, tDirs, tFiles, tLuaFiles , startup)
 end
