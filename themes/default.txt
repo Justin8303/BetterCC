@@ -4,14 +4,12 @@ prompt = "black
 promptHighlight = "black
 err = "black
 errHighlight = "black
-
 editorBackground = black
 editorLineHightlight = black
 editorLineNumbers = black
 editorLineNumbersHighlight = white
 editorError = black
 editorErrorHighlight = black
-
 textColor = white
 conditional = white
 constant = white
