@@ -2,14 +2,14 @@
 --  
 --  Lua IDE
 --  Made by GravityScore
---  Fixed by Justin8303
+--  Fixend and changed by Justin8303
 --  
 
 
 --  -------- Variables
 
 -- Version
-local version = "1.0"
+local version = "1.1"
 local args = {...}
 
 -- Editing
@@ -242,7 +242,7 @@ local normalTheme = {
 }
 
 local availableThemes = {
-	{"Water (Default)", "https://raw.githubusercontent.com/Justin8303/BetterCC/master/programs/luaide/themes/default.txt"}
+	{"Water (Default)", "https://raw.githubusercontent.com/Justin8303/BetterCC/master/themes/default.txt"}
 }
 
 local function loadTheme(path)
@@ -1920,10 +1920,30 @@ local function newFile()
 		return "menu"
 	elseif fs.exists(name) then
 		centerPrint("File Already Exists!")
-		local opt = prompt({{"Open", w/2 - 9, 14}, {"Cancel", w/2 + 2, 14}}, "horizontal")
-		if opt == "Open" then return "edit", name
-		elseif opt == "Cancel" then return "menu" end
-	else return "edit", name end
+		local opt = prompt(
+			{
+				{
+					"Open",
+					w/2 - 2,
+					14
+				},
+				{
+					"Cancel",
+					w/2 + 2,
+					14
+				}
+			},
+			"horizontal"
+		)
+	
+		if opt == "Open" then
+			return "edit", name
+		elseif opt == "Cancel" then
+			return "menu"
+		end
+	else
+		return "edit", name
+	end
 end
 
 local function openFile()
@@ -2102,10 +2122,35 @@ end
 local function menu()
 	title("Welcome to LuaIDE " .. version)
 
-	local opt = prompt({{"New File", w/2 - 13, 8}, {"Open File", w/2 - 14, 13},
-		{"Settings", w/2 + 2, 8}, {"Exit IDE", w/2 + 2, 13, bg = colors[theme.err],
-		highlight = colors[theme.errHighlight]}}, "vertical", true)
-	if opt == "New File" then return "new"
+	local opt = prompt(
+		{
+			{
+				"New File ",
+				w/2 - 14,
+				8
+			},
+			{
+				"Open File",
+				w/2 - 14,
+				13
+			},
+			{
+				"Settings",
+				w/2 + 2,
+				8
+			},
+			{
+				"Exit IDE",
+				w/2 + 2,
+				13,
+				bg = colors[theme.err],
+				highlight = colors[theme.errHighlight]
+			}
+		},
+		"vertical",
+		true
+	)
+	if opt == "New File " then return "new"
 	elseif opt == "Open File" then return "open"
 	elseif opt == "Settings" then return "settings"
 	elseif opt == "Exit IDE" then return "exit" end
@@ -2130,10 +2175,15 @@ local function main(arguments)
 		if opt == "menu" then opt = menu() end
 
 		-- Other
-		if opt == "new" then opt, data = newFile()
-		elseif opt == "open" then opt, data = openFile()
-		elseif opt == "settings" then opt = settings()
-		end if opt == "exit" then break end
+		if opt == "new" then
+			opt, data = newFile()
+		elseif opt == "open" then
+			opt, data = openFile()
+		elseif opt == "settings" then
+			opt = settings()
+		end if opt == "exit" then
+			break
+		end
 
 		-- Edit
 		if opt == "edit" and data then opt = edit(data) end
@@ -2190,3 +2240,7 @@ if err and not err:find("Terminated") then
 	os.queueEvent(event_distract)
 	os.pullEvent()
 end
+
+term.setBackgroundColor(colors.black)
+shell.run("clear")
+shell.run("shell")
