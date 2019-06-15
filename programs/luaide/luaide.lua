@@ -1,8 +1,8 @@
 
 --  
 --  Lua IDE
---  Made by GravityScore
---  Fixed by Justin8303
+--  Original program made by GravityScore
+--  Fixed and changed by Justin8303
 --  
 
 
@@ -36,8 +36,9 @@ local event_distract = "luaide_distractionEvent"
 -- Locations
 local updateURL = "https://raw.github.com/GravityScore/LuaIDE/master/luaide.lua"
 local ideLocation = "/" .. shell.getRunningProgram()
-local themeLocation = "/.LuaIDE-Theme"
-local tempthemefile = "LuaIDE_temp_theme_file"
+local workdir = shell.getRunningProgram():sub(1,shell.getRunningProgram():find("[a-zA-Z_0-9]*%.*[a-zA-Z_0-9]*$")-1)
+local themeLocation = workdir.."/LuaIDE-Theme"
+local tempthemefile = workdir.."/LuaIDE_temp_theme_file"
 
 local function isAdvanced() return term.isColor and term.isColor() end
 
@@ -215,7 +216,8 @@ local defaultTheme = {
 	constant = "orange",
 	["function"] = "magenta",
 	string = "red",
-	comment = "lime"
+	comment = "lime",
+	functiondefinition = "lightBlue"
 }
 
 local normalTheme = {
@@ -238,11 +240,13 @@ local normalTheme = {
 	constant = "white",
 	["function"] = "white",
 	string = "white",
-	comment = "white"
+	comment = "white",
+	functiondefinition = "white"
 }
 
 local availableThemes = {
-	{"Dawn (Default)", "default.theme"}
+	{"Dawn (Default)", "default.theme"},
+	{"Sublimetext", "sublimetext.theme"}
 }
 
 local function loadTheme(path)
@@ -568,7 +572,6 @@ languages.lua.keywords = {
 	["elseif"] = "conditional",
 	["end"] = "conditional",
 	["for"] = "conditional",
-	["function"] = "conditional",
 	["if"] = "conditional",
 	["in"] = "conditional",
 	["local"] = "conditional",
@@ -579,6 +582,8 @@ languages.lua.keywords = {
 	["then"] = "conditional",
 	["until"] = "conditional",
 	["while"] = "conditional",
+
+	["function"] = "functiondefinition",
 
 	["true"] = "constant",
 	["false"] = "constant",
@@ -2042,7 +2047,8 @@ local function changeTheme()
 		for _, v in pairs(availableThemes) do
 			if v[1] == t then
 				local grp = shell.getRunningProgram()
-				local workdir = grp:gmatch(grp:match("[a-zA-Z_0-9]*%.*[a-zA-Z_0-9]*$"),"")
+				local a = grp:find("[a-zA-Z_0-9]*%.*[a-zA-Z_0-9]*$")
+				local workdir = grp:sub(1,a-1)
 				path = workdir.."themes/"..v[2]
 			end
 		end
@@ -2230,4 +2236,3 @@ end
 
 term.setBackgroundColor(colors.black)
 shell.run("clear")
-shell.run("shell")
