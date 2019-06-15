@@ -242,7 +242,8 @@ local normalTheme = {
 }
 
 local availableThemes = {
-	{"Dawn (Default)", "default.theme"}
+	{"Dawn (Default)", "default.theme"},
+	{"Sublimetext", "sublimetext.theme"}
 }
 
 local function loadTheme(path)
