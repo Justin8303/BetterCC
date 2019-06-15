@@ -2,7 +2,7 @@
 --  
 --  Lua IDE
 --  Made by GravityScore
---  Fixend and changed by Justin8303
+--  Fixed by Justin8303
 --  
 
 
@@ -242,7 +242,7 @@ local normalTheme = {
 }
 
 local availableThemes = {
-	{"Water (Default)", "https://raw.githubusercontent.com/Justin8303/BetterCC/master/themes/default.txt"}
+	{"Dawn (Default)", "default.theme"}
 }
 
 local function loadTheme(path)
@@ -486,25 +486,6 @@ end
 
 
 --  -------- Saving and Loading
-
-local function download(url, path)
-	for i = 1, 3 do
-		local response = http.get(url)
-		if response then
-			local data = response.readAll()
-			response.close()
-			if path then
-				local f = io.open(path, "w")
-				f:write(data)
-				f:close()
-			end
-			return true
-		end
-	end
-
-	return false
-end
-
 local function saveFile(path, lines)
 	local dir = path:sub(1, path:len() - fs.getName(path):len())
 	if not fs.exists(dir) then fs.makeDir(dir) end
@@ -2057,10 +2038,16 @@ local function changeTheme()
 		local disThemes = {"Back"}
 		for _, v in pairs(availableThemes) do table.insert(disThemes, v[1]) end
 		local t = scrollingPrompt(disThemes)
-		local url = nil
-		for _, v in pairs(availableThemes) do if v[1] == t then url = v[2] end end
+		local path = nil
+		for _, v in pairs(availableThemes) do
+			if v[1] == t then
+				local grp = shell.getRunningProgram()
+				local workdir = grp:gmatch(grp:match("[a-zA-Z_0-9]*%.*[a-zA-Z_0-9]*$"),"")
+				path = workdir.."themes/"..v[2]
+			end
+		end
 
-		if not url then return "settings" end
+		if not path then return "settings" end
 		if t == "Dawn (Default)" then
 			term.setBackgroundColor(colors[theme.backgroundHighlight])
 			term.setCursorPos(3, 3)
@@ -2079,7 +2066,7 @@ local function changeTheme()
 		term.write("LuaIDE - Downloading...")
 
 		fs.delete(tempthemefile)
-		download(url, tempthemefile)
+		fs.copy(path,tempthemefile)
 		local a = loadTheme(tempthemefile)
 
 		term.setCursorPos(3, 3)
