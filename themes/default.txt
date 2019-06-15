@@ -1,9 +1,9 @@
 background = black
 backgroundHighlight = black
-prompt = "black
-promptHighlight = "black
-err = "black
-errHighlight = "black
+prompt = black
+promptHighlight = black
+err = black
+errHighlight = black
 editorBackground = black
 editorLineHightlight = black
 editorLineNumbers = black
