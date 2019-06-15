@@ -242,7 +242,7 @@ local normalTheme = {
 }
 
 local availableThemes = {
-	{"Water (Default)", "https://raw.githubusercontent.com/Justin8303/BetterCC/master/themes/default.txt"}
+	{"Water (Default)", "https://raw.githubusercontent.com/Justin8303/BetterCC/master/programs/luaide/themes/default.txt"}
 }
 
 local function loadTheme(path)
