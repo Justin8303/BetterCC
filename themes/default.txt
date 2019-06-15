@@ -13,6 +13,6 @@ editorErrorHighlight = black
 textColor = white
 conditional = white
 constant = white
-["function"] = white
+function = white
 string = white
 comment = white
