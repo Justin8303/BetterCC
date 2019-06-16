@@ -2094,7 +2094,7 @@ local function changeTheme()
 	end
 end
 
-local function settings()
+local function tsettings()
 	title("LuaIDE - Settings")
 
 	local opt = prompt({{"Change Theme", w/2 - 17, 8}, {"Return to Menu", w/2 - 22, 13},
@@ -2170,7 +2170,7 @@ local function main(arguments)
 		elseif opt == "open" then
 			opt, data = openFile()
 		elseif opt == "settings" then
-			opt = settings()
+			opt = tsettings()
 		end if opt == "exit" then
 			break
 		end
@@ -2233,3 +2233,4 @@ end
 
 term.setBackgroundColor(colors.black)
 shell.run("clear")
+shell.run("shell")
