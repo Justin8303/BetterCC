@@ -41,7 +41,7 @@ end
 beforefsisReadOnly = fs.isReadOnly
 fs.isReadOnly = function(...)
 	input = {...}
-	if input[1]:match("^%b/root") then	--set root directory to readonly
+	if input[1]:match("^%b/"..settings.get( "rootDir" )) then	--set root directory to readonly
 		return true
 	end
 	if shortcuts[input[1]] then
@@ -150,3 +150,4 @@ shell.clearAlias("dir")
 shell.setAlias("dir","/root/programs/basics/list.lua")
 
 -- auto added commands
+
