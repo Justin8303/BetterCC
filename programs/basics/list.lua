@@ -21,7 +21,7 @@ for n, sItem in pairs( tAll ) do
 	if bShowHidden or string.sub( sItem, 1, 1 ) ~= "." then
 		local sPath = fs.combine( sDir, sItem )
 		if fs.isDir( sPath ) then
-			if sItem == "rom" or sItem == "root" then
+			if sItem == "rom" or sItem == settings.get( "rootDir" ) then
 				table.insert( tDirslocked, sItem )
 			else
 				table.insert( tDirs, sItem )
