@@ -2233,4 +2233,3 @@ end
 
 term.setBackgroundColor(colors.black)
 shell.run("clear")
-shell.run("shell")
