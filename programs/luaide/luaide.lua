@@ -38,7 +38,7 @@ local grp = shell.getRunningProgram()
 local a = grp:find("[a-zA-Z_0-9]*%.*[a-zA-Z_0-9]*$")
 local workdir = grp:sub(1,a-1)
 
-local updateURL = "https://raw.github.com/GravityScore/LuaIDE/master/luaide.lua"
+local updateURL = "https://raw.githubusercontent.com/Justin8303/BetterCC/master/programs/luaide/luaide.lua"
 local ideLocation = "/" .. shell.getRunningProgram()
 local themeLocation = workdir.."/LuaIDE-Theme"
 local tempthemefile = workdir.."/LuaIDE_temp_theme_file"
@@ -2216,7 +2216,7 @@ if err and not err:find("Terminated") then
 	term.setCursorPos(6, cy + 2)
 	term.write("Please report this error to")
 	term.setCursorPos(6, cy + 3)
-	term.write("GravityScore! ")
+	term.write("Justin8303! ")
 	
 	term.setBackgroundColor(colors[theme.background])
 	if isAdvanced() then centerPrint("Click to Exit...", h - 1)
