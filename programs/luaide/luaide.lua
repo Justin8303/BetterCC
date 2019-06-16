@@ -2232,5 +2232,5 @@ if err and not err:find("Terminated") then
 end
 
 term.setBackgroundColor(colors.black)
-shell.run("clear")
-shell.run("shell")
+term.clear()
+term.setCursorPos(1,1)
