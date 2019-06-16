@@ -139,7 +139,8 @@ loadfile = function(...)
 	end
 	return beforeloadfile(unpack(input))
 end
---auto added
+
+-- overwrite file system manager
 shell.setAlias("list","/root/programs/basics/list.lua")
 
 shell.clearAlias("ls")
@@ -148,3 +149,4 @@ shell.setAlias("ls","/root/programs/basics/list.lua")
 shell.clearAlias("dir")
 shell.setAlias("dir","/root/programs/basics/list.lua")
 
+-- auto added commands
