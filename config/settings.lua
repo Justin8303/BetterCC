@@ -2,40 +2,43 @@ file = fs.open("/root/config/shortcuts.dat","r")
 shortcuts = textutils.unserialize(file.readLine())
 file.close()
 
-beforefsopen = fs.open
-fs.open = function(...)
+function control(...)
 	input = {...}
 	if shortcuts[input[1]] then
 		input[1] = shortcuts[input[1]]
 	end
-	return beforefsopen(unpack(input))
+	return unpack(input)
+end
+
+function controltwice(...)
+	input = {...}
+	if shortcuts[input[1]] then
+		input[1] = shortcuts[input[1]]
+	end
+	if shortcuts[input[2]] then
+		input[2] = shortcuts[input[2]]
+	end
+	return unpack(input)
+end
+
+beforefsopen = fs.open
+fs.open = function(...)
+	return beforefsopen(unpack(control({...})))
 end
 
 beforefslist = fs.list
 fs.list = function(...)
-	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	return beforefslist(unpack(input))
+	return beforefslist(unpack(control({...})))
 end
 
 beforefsexists = fs.exists
 fs.exists = function(...)
-	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	return beforefsexists(unpack(input))
+	return beforefsexists(unpack(control({...})))
 end
 
 beforefsisDir = fs.isDir
 fs.isDir = function(...)
-	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	return beforefsisDir(unpack(input))
+	return beforefsisDir(unpack(control({...})))
 end
 
 beforefsisReadOnly = fs.isReadOnly
@@ -44,79 +47,42 @@ fs.isReadOnly = function(...)
 	if input[1]:match("^%b/"..settings.get( "rootDir" )) then	--set root directory to readonly
 		return true
 	end
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	return beforefsisReadOnly(unpack(input))
+	return beforefsisReadOnly(unpack(control({...})))
 end
 
 beforegetName = fs.getName
 fs.getName = function(...)
-	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	return beforegetName(unpack(input))
+	return beforegetName(unpack(control({...})))
 end
 
 beforefsgetSize = fs.getSize
 fs.getSize = function(...)
-	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	return beforefsgetSize(unpack(input))
+	return beforefsgetSize(unpack(control({...})))
 end
 
 beforefsgetFreeSpace = fs.getFreeSpace
 fs.getFreeSpace = function(...)
-	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	return beforefsgetFreeSpace(unpack(input))
+	return beforefsgetFreeSpace(unpack(control({...})))
 end
 
 beforefsmakeDir = fs.makeDir
 fs.makeDir = function(...)
-	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	return beforefsmakeDir(unpack(input))
+	return beforefsmakeDir(unpack(control({...})))
 end
 
 beforefsmove = fs.move
 fs.move = function(...)
-	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	if shortcuts[input[2]] then
-		input[2] = shortcuts[input[2]]
-	end
-	return beforefsmove(unpack(input))
+	return beforefsmove(unpack(controltwice({...})))
 end
 
 beforefscopy = fs.copy
 fs.copy = function(...)
-	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	if shortcuts[input[2]] then
-		input[2] = shortcuts[input[2]]
-	end
-	return beforefscopy(unpack(input))
+	return beforefscopy(unpack(controltwice({...})))
 end
 
 beforefsdelete = fs.delete
 fs.delete = function(...)
-	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	return beforefsdelete(unpack(input))
+	return beforefsdelete(unpack(control({...})))
 end
 
 beforefscombine = fs.combine
@@ -128,7 +94,7 @@ fs.combine = function(...)
 	if shortcuts[input[2]] then
 		input[2] = shortcuts[input[2]]
 	end
-	return beforefscombine(unpack(input))
+	return beforefscombine(unpack(controltwice({...})))
 end
 
 beforeloadfile = loadfile
@@ -137,7 +103,7 @@ loadfile = function(...)
 	if shortcuts[input[1]] then
 		input[1] = shortcuts[input[1]]
 	end
-	return beforeloadfile(unpack(input))
+	return beforeloadfile(unpack(control({...})))
 end
 
 -- overwrite file system manager
@@ -150,4 +116,3 @@ shell.clearAlias("dir")
 shell.setAlias("dir","/root/programs/basics/list.lua")
 
 -- auto added commands
-
