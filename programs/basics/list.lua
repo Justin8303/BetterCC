@@ -1,9 +1,16 @@
 local tArgs = { ... }
+local lall = false
 
 -- Get all the files in the directory
 local sDir = shell.dir()
 if tArgs[1] ~= nil then
-	sDir = shell.resolve( tArgs[1] )
+	if tArgs[1]:find("%-") then
+		if tArgs[1] == "-a" then
+			lall = true
+		end
+	else
+		sDir = shell.resolve( tArgs[1] )
+	end
 end
 
 -- Sort into dirs/files, and calculate column count
@@ -28,7 +35,11 @@ for n, sItem in pairs( tAll ) do
 			end
 		else
 			if sItem:match("%.%blua$") then
-				table.insert( tLuaFiles, sItem )
+				if not lall then
+					table.insert( tLuaFiles, sItem:sub(1,#sItem-4) )
+				else
+					table.insert( tLuaFiles, sItem)
+				end
 			elseif sItem == "startup" then
 				if fs.exists("startup") then
 					table.insert( startup, sItem )
