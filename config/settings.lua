@@ -116,3 +116,4 @@ shell.clearAlias("dir")
 shell.setAlias("dir","/root/programs/basics/list.lua")
 
 -- auto added commands
+
