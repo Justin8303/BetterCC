@@ -91,7 +91,6 @@ local peripheralimpl = {
 }
 
 --PROGRUN
-rednet.open("top")
 for k,v in pairs(peripheralimpl) do
 	peripheral[k] = v
 end
