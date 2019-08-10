@@ -10,7 +10,7 @@ function control(...)
 			input[k] = shortcuts[v]
 		end
 	end
-	return unpack(input)
+	return input
 end
 
 beforefsopen = fs.open
