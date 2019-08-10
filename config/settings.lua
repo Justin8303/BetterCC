@@ -4,19 +4,11 @@ file.close()
 
 function control(...)
 	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	return unpack(input)
-end
-
-function controltwice(...)
-	input = {...}
-	if shortcuts[input[1]] then
-		input[1] = shortcuts[input[1]]
-	end
-	if shortcuts[input[2]] then
-		input[2] = shortcuts[input[2]]
+	input = unpack(input)
+	for k,v in pairs(input) do
+		if shortcuts[v] then
+			input[k] = shortcuts[v]
+		end
 	end
 	return unpack(input)
 end
@@ -72,12 +64,12 @@ end
 
 beforefsmove = fs.move
 fs.move = function(...)
-	return beforefsmove(unpack(controltwice({...})))
+	return beforefsmove(unpack(control({...})))
 end
 
 beforefscopy = fs.copy
 fs.copy = function(...)
-	return beforefscopy(unpack(controltwice({...})))
+	return beforefscopy(unpack(control({...})))
 end
 
 beforefsdelete = fs.delete
@@ -94,7 +86,7 @@ fs.combine = function(...)
 	if shortcuts[input[2]] then
 		input[2] = shortcuts[input[2]]
 	end
-	return beforefscombine(unpack(controltwice({...})))
+	return beforefscombine(unpack(control({...})))
 end
 
 beforeloadfile = loadfile
