@@ -52,7 +52,13 @@ function getPackage(name)
         if data.Requirements ~= "" then
             for _,v in pairs(data.Requirements) do
                 if not packages[v] then
-                    getPackage(v)
+                    if data.Directory then
+                        if not fs.exists(data.Directory) then
+                            getPackage(v)
+                        end
+                    else
+                        getPackage(v)
+                    end
                 end
             end
         end
