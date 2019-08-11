@@ -14,8 +14,8 @@ local function isArray(t)
     return max == #t
 end
  
-local whites = {['\n']=true; ['\r']=true; ['\t']=true; [' ']=true; [',']=true; [':']=true}
-function removeWhite(str)
+local function removeWhite(str)
+    local whites = {['\n']=true; ['\r']=true; ['\t']=true; [' ']=true; [',']=true; [':']=true}
     while whites[str:sub(1, 1)] do
         str = str:sub(2)
     end
