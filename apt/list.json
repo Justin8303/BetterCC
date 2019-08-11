@@ -7,7 +7,8 @@
                 "Date": "11.08.2019|13:22",
                 "Requirements": "",
                 "Docs": "",
-                "Type": "program"
+                "Type": "program",
+                "Directory": "/apis/wget.lua"
             }
         },
         "qivex": {
@@ -28,7 +29,7 @@
                 "Requirements": "",
                 "Docs": "http://lycodon.com/forum/thread/998-lycodon-computercraft-api/",
                 "Type": "api",
-                "Directory": "apis/qmain"
+                "Directory": "/apis/qmain.lua"
             }
         }
     }
