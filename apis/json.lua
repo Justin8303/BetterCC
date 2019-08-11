@@ -147,7 +147,7 @@ local function parseArray(str)
     local i = 1
     while str:sub(1, 1) ~= "]" do
         local v = nil
-        v, str = parseValue(str)
+        v, str = JSON.parseValue(str)
         val[i] = v
         i = i + 1
         str = removeWhite(str)
@@ -158,11 +158,10 @@ end
  
 local function parseObject(str)
     str = removeWhite(str:sub(2))
- 
     local val = {}
     while str:sub(1, 1) ~= "}" do
         local k, v = nil, nil
-        k, v, str = parseMember(str)
+        k, v, str = JSON.parseMember(str)
         val[k] = v
         str = removeWhite(str)
     end
@@ -172,39 +171,39 @@ end
  
 local function parseMember(str)
     local k = nil
-    k, str = parseValue(str)
+    k, str = JSON.parseValue(str)
     local val = nil
-    val, str = parseValue(str)
+    val, str = JSON.parseValue(str)
     return k, val, str
 end
  
 local function parseValue(str)
     local fchar = str:sub(1, 1)
     if fchar == "{" then
-        return parseObject(str)
+        return JSON.parseObject(str)
     elseif fchar == "[" then
-        return parseArray(str)
+        return JSON.parseArray(str)
     elseif tonumber(fchar) ~= nil or numChars[fchar] then
-        return parseNumber(str)
+        return JSON.parseNumber(str)
     elseif str:sub(1, 4) == "true" or str:sub(1, 5) == "false" then
-        return parseBoolean(str)
+        return JSON.parseBoolean(str)
     elseif fchar == "\"" then
-        return parseString(str)
+        return JSON.parseString(str)
     elseif str:sub(1, 4) == "null" then
-        return parseNull(str)
+        return JSON.parseNull(str)
     end
     return nil
 end
  
 local function decode(str)
     str = removeWhite(str)
-    t = parseValue(str)
+    t = JSON.parseValue(str)
     return t
 end
  
-function decodeFromFile(path)
+local function decodeFromFile(path)
     local file = assert(fs.open(path, "r"))
-    local decoded = decode(file.readAll())
+    local decoded = JSON.decode(file.readAll())
     file.close()
     return decoded
 end
