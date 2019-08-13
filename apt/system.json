@@ -17,7 +17,7 @@
                         "Date": "13.08.2019|21:42",
                         "Type": "system-api",
                         "Directory": "/root/apis/fsextension.lua",
-                        "Compatibility": "function() if not fs.find then return true end"
+                        "Compatibility": "if not fs.find then return true"
                     },
                     "jsonapi": {
                         "Url": "https://github.com/Justin8303/BetterCC/blob/master/apis/json.lua",
