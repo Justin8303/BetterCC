@@ -11,7 +11,12 @@
                         "de.justin8303.bettercc.apis.settings",
                         "de.justin8303.bettercc.apis.wildcard",
                         "de.justin8303.bettercc.config.settings",
-                        "de.justin8303.bettercc.config.shortcuts"
+                        "de.justin8303.bettercc.config.shortcuts",
+                        "de.justin8303.bettercc.programs.basics.shortcuts",
+                        "de.justin8303.bettercc.programs.basics.list",
+                        "de.justin8303.bettercc.programs.luaide.luaide",
+                        "de.justin8303.bettercc.programs.luaide.themes.default",
+                        "de.justin8303.bettercc.programs.luaide.themes.sublimetext"
                     ],
                     "Type": "package"
                 },
