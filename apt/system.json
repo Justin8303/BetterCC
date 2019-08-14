@@ -2,14 +2,16 @@
     "de": {
         "justin8303": {
             "bettercc": {
-                "base": {
+                "core": {
                     "Date": "12.08.2019|11:34",
                     "Requirements": [
                         "de.justin8303.bettercc.apis.fsextension",
                         "de.justin8303.bettercc.apis.jsonapi",
                         "de.justin8303.bettercc.apis.remoteCall",
                         "de.justin8303.bettercc.apis.settings",
-                        "de.justin8303.bettercc.apis.wildcard"
+                        "de.justin8303.bettercc.apis.wildcard",
+                        "de.justin8303.bettercc.config.settings",
+                        "de.justin8303.bettercc.config.shortcuts"
                     ],
                     "Type": "package"
                 },
@@ -50,6 +52,65 @@
                         "Date": "13.08.2019|22:05",
                         "Type": "system-api",
                         "Directory": "/root/apis/wildcard.lua"
+                    }
+                },
+                "config": {
+                    "settings": {
+                        "Url": "https://github.com/Justin8303/BetterCC/blob/master/config/settings.lua",
+                        "Source": "GitHub",
+                        "Date": "14.08.2019|10:15",
+                        "Type": "system-api",
+                        "Directory": "/root/config/settings.lua"
+                    },
+                    "shortcuts": {
+                        "Url": "https://github.com/Justin8303/BetterCC/blob/master/config/shortcuts.lua",
+                        "Source": "GitHub",
+                        "Date": "14.08.2019|10:16",
+                        "Type": "system-api",
+                        "Directory": "/root/config/shortcuts.lua"
+                    }
+                },
+                "programs": {
+                    "basics": {
+                        "shortcuts": {
+                            "Url": "https://github.com/Justin8303/BetterCC/blob/master/programs/basics/apt.lua",
+                            "Source": "GitHub",
+                            "Date": "14.08.2019|10:24",
+                            "Type": "system-program",
+                            "Directory": "/root/programs/basics/apt.lua"
+                        },
+                        "list": {
+                            "Url": "https://github.com/Justin8303/BetterCC/blob/master/programs/basics/list.lua",
+                            "Source": "GitHub",
+                            "Date": "14.08.2019|10:25",
+                            "Type": "system-program",
+                            "Directory": "/root/programs/basics/list.lua"
+                        }
+                    },
+                    "luaide": {
+                        "luaide": {
+                            "Url": "https://github.com/Justin8303/BetterCC/blob/master/programs/luaide/luaide.lua",
+                            "Source": "GitHub",
+                            "Date": "14.08.2019|10:25",
+                            "Type": "program",
+                            "Directory": "/root/programs/luaide/luaide.lua"
+                        },
+                        "themes": {
+                            "default": {
+                                "Url": "https://github.com/Justin8303/BetterCC/blob/master/programs/luaide/themes/default.txt",
+                                "Source": "GitHub",
+                                "Date": "14.08.2019|10:33",
+                                "Type": "theme",
+                                "Directory": "/root/programs/luaide/themes/default.txt"
+                            },
+                            "sublimetext": {
+                                "Url": "https://github.com/Justin8303/BetterCC/blob/master/programs/luaide/themes/sublimetext.txt",
+                                "Source": "GitHub",
+                                "Date": "14.08.2019|10:34",
+                                "Type": "theme",
+                                "Directory": "/root/programs/luaide/themes/sublimetext.txt"
+                            }
+                        }
                     }
                 }
             }
