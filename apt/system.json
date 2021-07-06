@@ -23,7 +23,7 @@
                 },
                 "apis": {
                     "fsextension": {
-                        "Url": "https://github.com/Justin8303/BetterCC/blob/master/apis/fsextension.lua",
+                        "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/apis/fsextension.lua",
                         "Source": "GitHub",
                         "Date": "13.08.2019|21:42",
                         "Type": "system-api",
@@ -32,7 +32,7 @@
                         "Version": "1.0.0"
                     },
                     "jsonapi": {
-                        "Url": "https://github.com/Justin8303/BetterCC/blob/master/apis/json.lua",
+                        "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/apis/json.lua",
                         "Source": "GitHub",
                         "Date": "12.08.2019|12:24",
                         "Type": "system-api",
@@ -40,7 +40,7 @@
                         "Version": "1.0.0"
                     },
                     "remoteCall": {
-                        "Url": "https://github.com/Justin8303/BetterCC/blob/master/apis/remoteCall.lua",
+                        "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/apis/remoteCall.lua",
                         "Source": "GitHub",
                         "Date": "13.08.2019|22:02",
                         "Type": "system-api",
@@ -48,7 +48,7 @@
                         "Version": "1.0.0"
                     },
                     "settings": {
-                        "Url": "https://github.com/Justin8303/BetterCC/blob/master/apis/settings.lua",
+                        "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/apis/settings.lua",
                         "Source": "GitHub",
                         "Date": "13.08.2019|22:04",
                         "Type": "system-api",
@@ -57,7 +57,7 @@
                         "Version": "1.0.0"
                     },
                     "wildcard": {
-                        "Url": "https://github.com/Justin8303/BetterCC/blob/master/apis/wildcard.lua",
+                        "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/apis/wildcard.lua",
                         "Source": "GitHub",
                         "Date": "13.08.2019|22:05",
                         "Type": "system-api",
@@ -67,7 +67,7 @@
                 },
                 "config": {
                     "settings": {
-                        "Url": "https://github.com/Justin8303/BetterCC/blob/master/config/settings.lua",
+                        "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/config/settings.lua",
                         "Source": "GitHub",
                         "Date": "14.08.2019|10:15",
                         "Type": "system-api",
@@ -75,7 +75,7 @@
                         "Version": "1.0.0"
                     },
                     "shortcuts": {
-                        "Url": "https://github.com/Justin8303/BetterCC/blob/master/config/shortcuts.lua",
+                        "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/config/shortcuts.lua",
                         "Source": "GitHub",
                         "Date": "14.08.2019|10:16",
                         "Type": "system-api",
@@ -86,7 +86,7 @@
                 "programs": {
                     "basics": {
                         "shortcuts": {
-                            "Url": "https://github.com/Justin8303/BetterCC/blob/master/programs/basics/apt.lua",
+                            "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/programs/basics/apt.lua",
                             "Source": "GitHub",
                             "Date": "14.08.2019|10:24",
                             "Type": "system-program",
@@ -94,7 +94,7 @@
                             "Version": "1.0.0"
                         },
                         "list": {
-                            "Url": "https://github.com/Justin8303/BetterCC/blob/master/programs/basics/list.lua",
+                            "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/programs/basics/list.lua",
                             "Source": "GitHub",
                             "Date": "14.08.2019|10:25",
                             "Type": "system-program",
@@ -104,7 +104,7 @@
                     },
                     "luaide": {
                         "luaide": {
-                            "Url": "https://github.com/Justin8303/BetterCC/blob/master/programs/luaide/luaide.lua",
+                            "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/programs/luaide/luaide.lua",
                             "Source": "GitHub",
                             "Date": "14.08.2019|10:25",
                             "Type": "program",
@@ -113,7 +113,7 @@
                         },
                         "themes": {
                             "default": {
-                                "Url": "https://github.com/Justin8303/BetterCC/blob/master/programs/luaide/themes/default.txt",
+                                "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/programs/luaide/themes/default.txt",
                                 "Source": "GitHub",
                                 "Date": "14.08.2019|10:33",
                                 "Type": "theme",
@@ -121,7 +121,7 @@
                                 "Version": "1.0.0"
                             },
                             "sublimetext": {
-                                "Url": "https://github.com/Justin8303/BetterCC/blob/master/programs/luaide/themes/sublimetext.txt",
+                                "Url": "https://raw.githubusercontent.com/Justin8303/BetterCC/master/programs/luaide/themes/sublimetext.txt",
                                 "Source": "GitHub",
                                 "Date": "14.08.2019|10:34",
                                 "Type": "theme",
