@@ -325,6 +325,7 @@ function checkobj(obj)
     if obj.Type then return false end
     if obj.Directory then return false end
     if obj.Compatibility then return false end
+    if obj.Version then return false end
     return true
 end
 
@@ -359,15 +360,15 @@ if command == "get" then
             if v.Compatibility then
                 if not loadstring(v.Compatibility)() then
                     term.setTextColor(colors.red)
-                    print(k.." ("..v.Type..")")
                     table.insert(incompatible, v)
                 else
                     term.setTextColor(colors.lime)
-                    print(k.." ("..v.Type..")")
                 end
+
+                print(k.." ("..v.Type.."), "..v.Version)
             end
             term.setTextColor(colors.lime)
-            print(k.." ("..v.Type..")")
+            print(k.." ("..v.Type.."), "..v.Version)
         end
         term.setTextColor(colors.white)
         print("0 upgraded, "..table.getlength(packages).." installed, "..table.getlength(incompatible).." incompatible")
